@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para a melhor namorada-Psicóloga do Mundo</title>
+
+  <style>
+    body {
+      background-image: url('https://preview.redd.it/8ji9vootufr71.jpg?width=1080&crop=smart&auto=webp&s=a5ae242c27518a687d8fd05fc715127b52be71cf');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'jetbrains mono', monospace;
+      font-size: 13px;
+    }
+
+    .painel {
+      position: relative; /* importante para que elementos absolutos fiquem relativos a ele */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(202, 153, 248, 0.1);
+      backdrop-filter: blur(4px);
+      width: 500px;
+      height: 500px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 6px 10px rgba(24, 24, 24, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgb(75, 6, 6);
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-top: -30px;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+    font-size: 18px;
+    position: absolute; /* ou relative, depende do efeito desejado */
+    left: 80px;
+    top: 75%;
+    transform: translateY(-50%);
+    }
+
+
+    img {
+      width: 300px;
+      border-radius: 25px;
+      margin-top: -25px;
+      margin-bottom: -10px;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      width: 100%;
+      /* Só o botão "Sim" ficará aqui, que ficará fixo */
+    }
+
+    #sim {
+      height: 40px;
+      width: 60px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.5s;
+      cursor: pointer;
+      border: 4px solid #99eea4;
+      background-color: #30cd45;
+      color: rgb(11, 81, 47);
+      user-select: none;
+      position: relative; /* fixo */
+
+      /* posição inicial */
+      left: -60px;
+      top: 160%;
+      transform: translateY(-50%);
+
+    }
+
+    #sim:hover {
+      background-color: #00ff22;
+    }
+
+    #nao {
+      position: absolute; /* será movido livremente dentro do painel */
+      height: 40px;
+      width: 60px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.5s;
+      cursor: pointer;
+      border: 4px solid rgb(255, 114, 114);
+      background-color: #e53935;
+      color: #560b09;
+      user-select: none;
+      /* posição inicial */
+      left: 260px;
+      top: 88%;
+      transform: translateY(-50%);
+    }
+
+    #nao:hover {
+      background-color: #f96f6f;
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+
+<audio id="audioLofi" loop>
+  <source src="Audios/lofimusic.mp3" type="audio/mpeg" />
+  Seu navegador não suporta o elemento de áudio.
+</audio>
+
+<button onclick="iniciarMusica()" class="botao-musica">🎵 Clica em mim, pfvr! 🎵</button>
+
+<style>
+  .botao-musica {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+
+  .botao-musica:hover {
+    background-color:  rgba(252, 229, 139, 0.3);
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .botao-musica:active {
+    transform: scale(0.98);
+  }
+</style>
+
+
+
+
+
+
+<script>
+  const audio = document.getElementById("audioLofi");
+  function iniciarMusica() {
+    audio.volume = 0.2;
+    audio.play();
+  }
+</script>
+
+
+
+
+
+  <div class="painel">
+    <h1>❤️ Para a Psicóloga mais<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incrível que eu conheço ❤️</h1>
+
+    <img src="https://media.tenor.com/dh_hlwT-pvwAAAAj/love.gif" alt="love gif" />
+
+    <h3>Aceita ser o CSS do meu HTML? </h3>
+
+    <div class="botoes">
+      <button id="sim" onclick="parabens()">Sim!</button>
+    </div>
+    <!-- Botão "Não" fora do container flex, para poder mover absoluto sem mexer no "Sim" -->
+    <button id="nao" onmouseover="fuja()">Não!</button>
+  </div>
+
+
+
+
+
+
+
+  <script>
+    function fuja() {
+      const botaoNao = document.getElementById("nao");
+      const painel = document.querySelector(".painel");
+
+      const maxX = painel.clientWidth - botaoNao.offsetWidth;
+      const maxY = painel.clientHeight - botaoNao.offsetHeight;
+
+      const aleatorioX = Math.floor(Math.random() * maxX);
+      const aleatorioY = Math.floor(Math.random() * maxY);
+
+      botaoNao.style.left = aleatorioX + "px";
+      botaoNao.style.top = aleatorioY + "px";
+    }
+
+function parabens() {
+  window.location.href = "pagina2.html"; // ou uma URL completa, como: "https://exemplo.com/sucesso"
+}
+
+
+
+
+
+  </script>
+
+</body>
+</html>
